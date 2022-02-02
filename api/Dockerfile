@@ -24,7 +24,7 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-RUN adduser -D buildadmin
+RUN useradd --create-home buildadmin
 RUN chown buildadmin:buildadmin /app /app/* 
 USER buildadmin
  
