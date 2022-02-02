@@ -16,4 +16,5 @@
  FROM base AS final
  WORKDIR /app
  COPY --from=publish /app/publish .
+ USER appuser
  ENTRYPOINT ["dotnet", "api.dll"]
