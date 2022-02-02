@@ -1,7 +1,14 @@
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
-EXPOSE 5000
+
+LABEL io.k8s.display-name="app name" \
+      io.k8s.description="container description..." \
+      io.openshift.expose-services="8080:http"
+
+EXPOSE 8080
+ENV ASPNETCORE_URLS=http://*:8080
+
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
